@@ -25,7 +25,7 @@ process_user_input.character <- function(x, ...) {
       " into a data frame.",
       "\n       Either install 'jsonlite' or pass ",
       deparse(substitute(x)),
-      " as a 'data.frame'.",
+      " as a 'data.frame' or 'response'.",
       call. = FALSE
     )
   }

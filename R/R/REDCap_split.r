@@ -1,8 +1,9 @@
 #' Split REDCap repeating instruments table into multiple tables
 #'
-#' This will take output from a REDCap export and split it into a base table
-#' and child tables for each repeating instrument. Metadata
-#' is used to determine which fields should be included in each resultant table.
+#' This will take output from a REDCap export and split it into multiple tables.
+#' The function returns a primary (parent) table as well as secondary (child)
+#' tables for each repeating instrument. Metadata is used to determine which
+#' fields should be included in each resultant table.
 #'
 #' @param records Exported project records. May be a \code{data.frame},
 #'   \code{response}, or \code{character} vector containing JSON from an API
@@ -15,7 +16,7 @@
 #'   \code{forms = 'all'}.
 #' @param forms Indicate whether to create separate tables for repeating
 #'   instruments only or for all forms.
-#' @author Paul W. Egeler, M.S., GStat
+#' @author Paul W. Egeler, M.S.
 #' @examples
 #' \dontrun{
 #' # Using an API call -------------------------------------------------------
@@ -55,16 +56,12 @@
 #'
 #' # In conjunction with the R export script ---------------------------------
 #'
-#' # You must set the working directory first since the REDCap data export script
-#' # contains relative file references.
-#' setwd("/path/to/data/")
-#'
 #' # Run the data export script supplied by REDCap.
 #' # This will create a data.frame of your records called 'data'
-#' source("ExampleProject_R_2018-06-03_1700.r")
+#' source("/path/to/data/ExampleProject_R_2018-06-03_1700.r", chdir = TRUE)
 #'
 #' # Get the metadata
-#' metadata <- read.csv("ExampleProject_DataDictionary_2018-06-03.csv")
+#' metadata <- read.csv("/path/to/metadata/ExampleProject_DataDictionary_2018-06-03.csv")
 #'
 #' # Split the tables
 #' REDCapRITS::REDCap_split(data, metadata)
